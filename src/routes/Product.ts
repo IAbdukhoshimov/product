@@ -1,10 +1,10 @@
 import { Router } from "express"
 import { ProductController } from "../controllers/Product"
-import { SampleValidator } from "../validators/sample"
+import { ProductValidator } from "../validators/Product"
 
 const router = Router({ mergeParams: true })
 const controller = new ProductController()
-const validator = new SampleValidator()
+const validator = new ProductValidator()
 
 router.route("/").get(controller.getAll).post(validator.create, controller.create)
 router

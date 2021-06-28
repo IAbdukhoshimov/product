@@ -2,15 +2,17 @@ import Joi from "joi"
 import { NextFunction, Request, Response } from "express"
 import catchAsync from "../utils/catchAsync"
 
-export class SampleValidator {
+export class ProductValidator {
     keys = {
         required: "required",
         optional: "optional"
     }
 
-    createSchema = Joi.object({
+    productSchema = Joi.object({
+        org_id: Joi.string().required(),
+        owner_id: Joi.string().required(),
         name: Joi.string().required(),
-        description: Joi.string().required()
+        barcode: Joi.string().required(),
     })
 
     updateSchema = Joi.object({
@@ -19,7 +21,7 @@ export class SampleValidator {
     })
 
     create = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        const { error } = this.createSchema.validate(req.body)
+        const { error } = this.productSchema.validate(req.body)
         if (error) return next(error)
 
         next()
