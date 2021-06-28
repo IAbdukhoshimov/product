@@ -76,8 +76,8 @@ let productSchema = new mongoose.Schema({
     is_shared: {
         type: Boolean
     },
-    update_history:{
-        
+    update_history: {
+        type: String
     }
 
 })

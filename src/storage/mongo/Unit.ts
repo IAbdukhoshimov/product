@@ -1,14 +1,14 @@
-import { ProductRepo, IProductAllResponse } from "../repo/Product"
-import Product, { IProduct } from "../../models/Product"
+import { UnitRepo, IUnitAllResponse } from "../repo/Unit"
+import Unit, { IUnit } from "../../models/Unit"
 import { logger } from "../../config/logger"
 import AppError from "../../utils/appError"
 
-export class ProductStorage implements ProductRepo {
-    private scope = "storage.product"
+export class UnitStorage implements UnitRepo {
+    private scope = "storage.unit"
 
-    async find(query: Object): Promise<IProduct[]> {
+    async find(query: Object): Promise<IUnit[]> {
         try {
-            let dbObj = await Product.find({ ...query })
+            let dbObj = await Unit.find({ ...query })
 
             return dbObj
         } catch (error) {
@@ -17,9 +17,9 @@ export class ProductStorage implements ProductRepo {
         }
     }
 
-    async findOne(query: Object): Promise<IProduct> {
+    async findOne(query: Object): Promise<IUnit> {
         try {
-            let dbObj = await Product.findOne({ ...query })
+            let dbObj = await Unit.findOne({ ...query })
 
             if (!dbObj) {
                 logger.warn(`${this.scope}.get failed to findOne`)
@@ -33,9 +33,9 @@ export class ProductStorage implements ProductRepo {
         }
     }
 
-    async findById(id: string): Promise<IProduct> {
+    async findById(id: string): Promise<IUnit> {
         try {
-            let dbObj = await Product.findById(id)
+            let dbObj = await Unit.findById(id)
 
             if (!dbObj) {
                 logger.warn(`${this.scope}.get failed to findOne`)
@@ -49,9 +49,9 @@ export class ProductStorage implements ProductRepo {
         }
     }
 
-    async create(payload: IProduct): Promise<IProduct> {
+    async create(payload: IUnit): Promise<IUnit> {
         try {
-            let dbObj = await Product.create(payload)
+            let dbObj = await Unit.create(payload)
 
             return dbObj
         } catch (error) {
@@ -60,9 +60,9 @@ export class ProductStorage implements ProductRepo {
         }
     }
 
-    async update(id: string, payload: IProduct): Promise<IProduct> {
+    async update(id: string, payload: IUnit): Promise<IUnit> {
         try {
-            let dbObj = await Product.findByIdAndUpdate(id, payload, {
+            let dbObj = await Unit.findByIdAndUpdate(id, payload, {
                 new: true
             })
 
@@ -80,7 +80,7 @@ export class ProductStorage implements ProductRepo {
 
     async delete(id: string): Promise<any> {
         try {
-            let dbObj = await Product.findByIdAndDelete(id)
+            let dbObj = await Unit.findByIdAndDelete(id)
 
             if (!dbObj) {
                 logger.warn(`${this.scope}.delete failed to findByIdAndDelete`)
