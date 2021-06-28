@@ -6,51 +6,51 @@ import catchAsync from "../utils/catchAsync"
 
 export class ProductController {
     getAll = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        const samples = await storage.sample.find(req.query)
+        const Products = await storage.Product.find(req.query)
 
         res.status(200).json({
             success: true,
             data: {
-                samples
+                Products
             }
         })
     })
 
     get = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        const sample = await storage.sample.findById(req.params.id)
+        const Product = await storage.Product.findById(req.params.id)
 
         res.status(200).json({
             success: true,
             data: {
-                sample
+                Product
             }
         })
     })
 
     create = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        const sample = await storage.sample.create(req.body)
+        const Product = await storage.Product.create(req.body)
 
         res.status(201).json({
             success: true,
             data: {
-                sample
+                Product
             }
         })
     })
 
     update = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        const sample = await storage.sample.update(req.params.id, req.body)
+        const Product = await storage.Product.update(req.params.id, req.body)
 
         res.status(200).json({
             success: true,
             data: {
-                sample
+                Product
             }
         })
     })
 
     delete = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-        await storage.sample.delete(req.params.id)
+        await storage.Product.delete(req.params.id)
 
         res.status(204).json({
             success: true,

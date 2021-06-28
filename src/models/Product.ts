@@ -51,10 +51,32 @@ let productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
-        type:String
+    image: {
+        type: String
     },
-    unit:{
+    unit: {
+
+    },
+    group: {
+
+    },
+    vender_code: {
+        type: String
+    },
+    weight: {
+        type: String,
+        required: true
+    },
+    volume: {
+        type: String,
+    },
+    VAT: {
+        type: Number
+    },
+    is_shared: {
+        type: Boolean
+    },
+    update_history:{
         
     }
 

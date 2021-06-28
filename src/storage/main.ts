@@ -1,9 +1,9 @@
 import { ProductStorage } from "./mongo/Product"
 
 interface IStorage {
-    sample: ProductStorage
+    Product: ProductStorage
 }
 
 export let storage: IStorage = {
-    sample: new ProductStorage()
+    Product: new ProductStorage()
 }
